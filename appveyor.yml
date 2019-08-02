@@ -1,0 +1,6 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+build:
+  verbosity: minimal
+test_script:
+- ps: vstest.console /logger:Appveyor .\x64\Debug\ConsolePacmanTests.dll
