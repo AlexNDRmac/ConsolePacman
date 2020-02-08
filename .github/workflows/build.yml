@@ -8,13 +8,16 @@ jobs:
   build:
     name: Windows
     runs-on: windows-latest
+
     steps:
       - uses: actions/checkout@v1
-      - name: Build
-        shell: pwsh
-        run: msbuild ConsolePacman\ConsolePacman.vsxproj
+
+      - uses: warrenbuckley/Setup-MSBuild@v1
+
+      - name: Build with MSBuild
+        run: msbuild ConsolePacman.sln
+
       - name: Run tests
-        shell: pwsh
         run: vstest.console .\x64\Debug\ConsolePacmanTests.dll
 
 
