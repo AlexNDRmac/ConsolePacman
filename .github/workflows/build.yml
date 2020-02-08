@@ -12,7 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - uses: warrenbuckley/Setup-MSBuild@v1
+      - name: Setup MSBuild.exe
+        uses: warrenbuckley/Setup-MSBuild@v1
+
+      - name: Setup VSTest.exe
+        uses: Malcolmnixon/Setup-VSTest@v2
 
       - name: Build with MSBuild
         run: msbuild ConsolePacman.sln
