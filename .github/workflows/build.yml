@@ -1,0 +1,20 @@
+name: Build and Test
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    name: Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build
+        shell: pwsh
+        run: msbuild ConsolePacman\ConsolePacman.vsxproj
+      - name: Run tests
+        shell: pwsh
+        run: vstest.console .\x64\Debug\ConsolePacmanTests.dll
+
+
