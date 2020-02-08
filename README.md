@@ -1,7 +1,6 @@
-
 # Console Pacman game (demo)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/3j3vxstpba3nxt78?svg=true)](https://ci.appveyor.com/project/AlexNDRmac/consolepacman)
+[![Build status][actions build badge]][actions build link]
 
 Little tiny console [Pacman](https://en.wikipedia.org/wiki/Pac-Man) game for Windows.
 
@@ -38,3 +37,7 @@ Little tiny console [Pacman](https://en.wikipedia.org/wiki/Pac-Man) game for Win
 ## Controls:
 
 - Use Keyboard arrows to change Pacman direction
+
+
+[actions build badge]: https://github.com/AlexNDRmac/ConsolePacman/workflows/Build%20and%20Test/badge.svg "Build status"
+[actions build link]: https://github.com/AlexNDRmac/ConsolePacman/actions?query=workflow%3A%22Build+and+Test%22
