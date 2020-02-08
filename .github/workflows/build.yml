@@ -1,0 +1,27 @@
+name: Build and Test
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    name: Windows
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup MSBuild.exe
+        uses: warrenbuckley/Setup-MSBuild@v1
+
+      - name: Setup VSTest.exe
+        uses: Malcolmnixon/Setup-VSTest@v2
+
+      - name: Build with MSBuild
+        run: msbuild ConsolePacman.sln
+
+      - name: Run tests
+        run: vstest.console .\x64\Debug\ConsolePacmanTests.dll
+
+
