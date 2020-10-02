@@ -42,17 +42,18 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
+          output: ${{ github.workspace }}/codeql-report.sarif
 
       - name: Save CodeQL Analysis Report
         uses: actions/upload-artifact@v2
         with:
           name: cpp-builtin.sarif
-          path: ../results/*.sarif
+          path: ${{ github.workspace }}/*.sarif
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v1
         with:
           # Path to SARIF file relative to the root of the repository
-          sarif_file: ..\results\cpp-builtin.sarif
+          sarif_file: ${{ github.workspace }}/codeql-report.sarif
 
 
