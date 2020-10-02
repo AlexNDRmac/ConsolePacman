@@ -28,27 +28,10 @@ jobs:
       - name: Setup VSTest.exe
         uses: Malcolmnixon/Setup-VSTest@v2
 
-      # Initializes the CodeQL tools for scanning.
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: 'cpp'
-
       - name: Build with MSBuild
         run: msbuild ConsolePacman.sln
 
       - name: Run tests
         run: vstest.console .\x64\Debug\ConsolePacmanTests.dll
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
-        with:
-          output: ${{ github.workspace }}
-
-      - name: Save CodeQL Analysis Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: cpp-builtin.sarif
-          path: ${{ github.workspace }}/*.sarif
 
 
