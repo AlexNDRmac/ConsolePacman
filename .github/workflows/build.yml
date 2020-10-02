@@ -14,23 +14,31 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Setup tools cache
+        uses: actions/cache@v1
+        id: tools-cache
+        with:
+          path: C:\hostedtoolcache
+          key: ${{ runner.os }}-tools-${{ hashFiles('**/.github/workflows/build.yml') }}
+          restore-keys: ${{ runner.os }}-tools-
+
       - name: Setup MSBuild.exe
         uses: warrenbuckley/Setup-MSBuild@v1
 
       - name: Setup VSTest.exe
         uses: Malcolmnixon/Setup-VSTest@v2
 
-      - name: Build with MSBuild
-        run: msbuild ConsolePacman.sln
-
-      - name: Run tests
-        run: vstest.console .\x64\Debug\ConsolePacmanTests.dll
-
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
         with:
           languages: 'cpp'
+
+      - name: Build with MSBuild
+        run: msbuild ConsolePacman.sln
+
+      - name: Run tests
+        run: vstest.console .\x64\Debug\ConsolePacmanTests.dll
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
