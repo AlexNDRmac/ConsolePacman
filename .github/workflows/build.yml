@@ -26,7 +26,7 @@ jobs:
         uses: warrenbuckley/Setup-MSBuild@v1
 
       - name: Setup VSTest.exe
-        uses: Malcolmnixon/Setup-VSTest@v2
+        uses: Malcolmnixon/Setup-VSTest@v4
 
       - name: Build with MSBuild
         run: msbuild ConsolePacman.sln
