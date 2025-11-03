@@ -29,7 +29,7 @@ jobs:
         uses: darenm/Setup-VSTest@v1.3
 
       - name: Build with MSBuild
-        run: msbuild ConsolePacman.sln
+        run: msbuild ConsolePacman.sln /p:WindowsTargetPlatformVersion=10.0
 
       - name: Run tests
         run: vstest.console .\x64\Debug\ConsolePacmanTests.dll
